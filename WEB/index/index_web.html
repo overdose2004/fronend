@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperBike ซื้อ-ขายอะไหล่รถ Bigbike</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/index/index_web.css">
+    <!-- <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar-brand {
+            font-weight: bold;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+    </style> -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">SuperBike</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">หน้าหลัก</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/WEB/index3/product.html">สินค้า</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/WEB/index2/cart.html">ตะกร้าสินค้า</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/WEB/index4/contact.html">ติดต่อ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/WEB/login/login.html">เข้าสู่ระบบ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5" 
+    style="background-image: url(&quot;https://img2.pic.in.th/pic/Motorcycle-parts-Bike21.jpg&quot;);">
+        <div class="container">
+            <h1>ค้นหาสิ่งที่คุณต้องการ</h1>
+            <p class="lead">Explore our wide range of products at the best prices.</p>
+            <a href="#shop" class="btn btn-light btn-lg mt-3">สั่งซื้อตอนนี้</a>
+        </div>
+    </header>
+
+    <section id="shop" class="container py-5">
+        <h2 class="text-center mb-4">Available Products</h2>
+        <div class="row" id="product-list">
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; EMAIL : examble@gmail.com</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const productList = document.getElementById("product-list");
+
+            const products = [
+                { id: 1, name: "ผ้าเบรค", price: '150', description: "High-quality brake pads.", image: "https://img5.pic.in.th/file/secure-sv1/bb.webp" },
+                { id: 2, name: "น้ำมันเครื่อง", price: '150-500', description: "Durable and efficient oil filter.", image: "https://img2.pic.in.th/pic/mo.jpg" },
+                { id: 3, name: "ท่อรถ", price: '1,500', description: "Exhaust .", image: "https://img2.pic.in.th/pic/_31-1-2025_21488_www.akrapovic.com.jpeg" },
+
+            ];
+
+            products.forEach(product => {
+                const productCard = document.createElement("div");
+                productCard.className = "col-md-4 mb-4";
+                productCard.innerHTML = `
+                    <div class="card">
+                        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text">${product.description}</p>
+                            <p class="card-text text-primary">$${product.price}</p>
+                            <button class="btn btn-primary" onclick="addToCart(${product.id})">Add to Cart</button>
+                        </div>
+                    </div>
+                `;
+                productList.appendChild(productCard);
+            });
+
+            window.addToCart = (productId) => {
+                alert(`Product ${productId} added to cart.`);
+            };
+        });
+    </script>
+</body>
+</html>
